@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.Random;
+
 @SpringBootTest
 class VideoApplicationTests {
 
@@ -21,5 +23,12 @@ class VideoApplicationTests {
 //        Jokes jokes = jokesDao.selectById(1);
 //        System.out.println(jokes);
 //    }
+
+    @Test
+    public void randomTest(){
+        Random random = new Random();
+        int id = random.nextInt(10) +1;
+        System.out.println(id);
+    }
 
 }

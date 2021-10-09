@@ -55,13 +55,23 @@
                             <footer class="blockquote-footer">page:页数</footer>
                             <footer class="blockquote-footer">limit:每页显示条数</footer>
                             <footer class="blockquote-footer">cate_id:分类id</footer>
-                            <p>[[ ${host} ]]/page=1&limit=15&cate_id=1</p><br>
+                            <p>[[ ${host} ]]/api/joke?page=1&limit=15&cate_id=1</p><br>
                             <p>详情：[[ ${host} ]]/api/joke/detail</p>
                             <footer class="blockquote-footer">id:段子id</footer>
                             <p>[[ ${host} ]]/api/joke/detail=1</p><br>
                             <p>分类：[[ ${host} ]]/api/joke/cate</p>
                         </blockquote>
                     </div>
+                </div>
+            </div>
+
+            <div class="row p-2">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                        <div th:text="${data.title}"></div>
+                        <div>[[${data.siteName}]] | [[${data.createdAt}]]</div>
+                    </div>
+                    <div class="card-body" th:utext="${data.content}"></div>
                 </div>
             </div>
         </div>

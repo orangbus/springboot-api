@@ -57,6 +57,16 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-3 col-sm-6 col-xs-6" th:each="item:${lists}">
+                    <a th:href="'/channel/player?id='+${item.id}">
+                        <div class="alert alert-primary text-center" role="alert">
+                            <strong th:text="${item.name}"></strong>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
         </div>
     </div>
 </main>

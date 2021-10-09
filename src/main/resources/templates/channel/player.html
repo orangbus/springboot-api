@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/bootstrap5/css/bootstrap.min.css">
+    <title>[[ ${title} ]]</title>
+    <style>
+        #player{
+            width: 100%;
+            max-height: 500px;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Eighth navbar example">
+    <div class="container">
+        <a class="navbar-brand" href="#">首页</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07"
+                aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarsExample07">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/joke">段子</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/video">视频</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/channel">电视直播</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-bs-toggle="dropdown"
+                       aria-expanded="false">更多</a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown07">
+<!--                        <li><a class="dropdown-item" th:href="${qq}" target="_blank">QQ群</a></li>-->
+                        <li><a class="dropdown-item" href="#">博客</a></li>
+                        <li><a class="dropdown-item" href="#">电报群</a></li>
+                        <li><a class="dropdown-item" href="#">Github</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form>
+                <input class="form-control" type="text" placeholder="搜索" aria-label="Search">
+            </form>
+        </div>
+    </div>
+</nav>
+<main>
+    <div class="container mt-3">
+
+        <div class="row m-0 p-0">
+            <div class="alert alert-info" role="alert">
+                <strong th:text="${data.name}"></strong>
+            </div>
+            <video id="player" controls="" poster=""></video>
+        </div>
+    </div>
+</main>
+<footer class="text-muted py-5">
+    <div class="container">
+        <p class="float-end mb-1">
+            <a href="#">Back to top</a>
+        </p>
+        <p class="mb-1">秋名山上行人稀，常有车手竟高低。如今车道今犹在，不见当年老司机。</p>
+        <p class="mb-1" style="color: #e53243">本站资源均来自网络爬虫，仅供大家学习使用，与本站无关</p>
+    </div>
+</footer>
+
+<script src="/bootstrap5/js/bootstrap.min.js"></script>
+<script src="/jquery/jquery-3.6.0.min.js"></script>
+<script src="/hls/hls.min.js"></script>
+<script src="/layer/layer.js"></script>
+<script>
+    var url = "[[ ${data.mUrl}]]";
+    console.log(url)
+    function playerVideo(url){
+        reset(url);
+        var video = document.getElementById('player');
+        video.volume = 1.0;
+        video.poster = '';
+        var hls = new Hls();
+        var m3u8Url = decodeURIComponent(url)
+        hls.loadSource(m3u8Url);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, function () {
+            video.play();
+        });
+    }
+    if (url !== ""){
+        playerVideo(url);
+    }
+    // 重置
+    function reset(url){
+        $("#player-video").show();
+        $("#url").attr("placeholder",url).val("")
+    }
+</script>
+</body>
+</html>
