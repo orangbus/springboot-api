@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.orangbus.video.dao.JokesDao">
+  <resultMap id="BaseResultMap" type="com.orangbus.video.empty.Jokes">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="cate_id" jdbcType="INTEGER" property="cateId" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="author" jdbcType="VARCHAR" property="author" />
+    <result column="form_url" jdbcType="VARCHAR" property="formUrl" />
+    <result column="site_name" jdbcType="VARCHAR" property="siteName" />
+    <result column="push_time" jdbcType="VARCHAR" property="pushTime" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="visit" jdbcType="INTEGER" property="visit" />
+    <result column="likes" jdbcType="INTEGER" property="likes" />
+    <result column="unlikes" jdbcType="INTEGER" property="unlikes" />
+    <result column="level" jdbcType="TINYINT" property="level" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, title, cate_id, `status`, author, form_url, site_name, push_time, content, visit, 
+    likes, unlikes, `level`, created_at, updated_at
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from jokes
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from jokes
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.orangbus.video.empty.Jokes" useGeneratedKeys="true">
+    insert into jokes (title, cate_id, `status`, 
+      author, form_url, site_name, 
+      push_time, content, visit, 
+      likes, unlikes, `level`, 
+      created_at, updated_at)
+    values (#{title,jdbcType=VARCHAR}, #{cateId,jdbcType=INTEGER}, #{status,jdbcType=TINYINT}, 
+      #{author,jdbcType=VARCHAR}, #{formUrl,jdbcType=VARCHAR}, #{siteName,jdbcType=VARCHAR}, 
+      #{pushTime,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{visit,jdbcType=INTEGER}, 
+      #{likes,jdbcType=INTEGER}, #{unlikes,jdbcType=INTEGER}, #{level,jdbcType=TINYINT}, 
+      #{createdAt,jdbcType=TIMESTAMP}, #{updatedAt,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.orangbus.video.empty.Jokes" useGeneratedKeys="true">
+    insert into jokes
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="title != null">
+        title,
+      </if>
+      <if test="cateId != null">
+        cate_id,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="author != null">
+        author,
+      </if>
+      <if test="formUrl != null">
+        form_url,
+      </if>
+      <if test="siteName != null">
+        site_name,
+      </if>
+      <if test="pushTime != null">
+        push_time,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="visit != null">
+        visit,
+      </if>
+      <if test="likes != null">
+        likes,
+      </if>
+      <if test="unlikes != null">
+        unlikes,
+      </if>
+      <if test="level != null">
+        `level`,
+      </if>
+      <if test="createdAt != null">
+        created_at,
+      </if>
+      <if test="updatedAt != null">
+        updated_at,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="cateId != null">
+        #{cateId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="author != null">
+        #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="formUrl != null">
+        #{formUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="siteName != null">
+        #{siteName,jdbcType=VARCHAR},
+      </if>
+      <if test="pushTime != null">
+        #{pushTime,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="visit != null">
+        #{visit,jdbcType=INTEGER},
+      </if>
+      <if test="likes != null">
+        #{likes,jdbcType=INTEGER},
+      </if>
+      <if test="unlikes != null">
+        #{unlikes,jdbcType=INTEGER},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=TINYINT},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.orangbus.video.empty.Jokes">
+    update jokes
+    <set>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="cateId != null">
+        cate_id = #{cateId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="author != null">
+        author = #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="formUrl != null">
+        form_url = #{formUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="siteName != null">
+        site_name = #{siteName,jdbcType=VARCHAR},
+      </if>
+      <if test="pushTime != null">
+        push_time = #{pushTime,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="visit != null">
+        visit = #{visit,jdbcType=INTEGER},
+      </if>
+      <if test="likes != null">
+        likes = #{likes,jdbcType=INTEGER},
+      </if>
+      <if test="unlikes != null">
+        unlikes = #{unlikes,jdbcType=INTEGER},
+      </if>
+      <if test="level != null">
+        `level` = #{level,jdbcType=TINYINT},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.orangbus.video.empty.Jokes">
+    update jokes
+    set title = #{title,jdbcType=VARCHAR},
+      cate_id = #{cateId,jdbcType=INTEGER},
+      `status` = #{status,jdbcType=TINYINT},
+      author = #{author,jdbcType=VARCHAR},
+      form_url = #{formUrl,jdbcType=VARCHAR},
+      site_name = #{siteName,jdbcType=VARCHAR},
+      push_time = #{pushTime,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      visit = #{visit,jdbcType=INTEGER},
+      likes = #{likes,jdbcType=INTEGER},
+      unlikes = #{unlikes,jdbcType=INTEGER},
+      `level` = #{level,jdbcType=TINYINT},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

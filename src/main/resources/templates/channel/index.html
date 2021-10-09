@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/bootstrap5/css/bootstrap.min.css">
+    <title>[[ ${title} ]]</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Eighth navbar example">
+    <div class="container">
+        <a class="navbar-brand" href="#">首页</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExample07">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/joke">段子</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/video">视频</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/channel">电视直播</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-bs-toggle="dropdown" aria-expanded="false">更多</a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown07">
+                        <li><a class="dropdown-item" th:href="${qq}" target="_blank">QQ群</a></li>
+                        <li><a class="dropdown-item" href="#">博客</a></li>
+                        <li><a class="dropdown-item" href="#">电报群</a></li>
+                        <li><a class="dropdown-item" href="#">Github</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form>
+                <input class="form-control" type="text" placeholder="搜索" aria-label="Search">
+            </form>
+        </div>
+    </div>
+</nav>
+<main>
+    <div class="albumbg-light">
+        <div class="container">
+            <div class="row p-2">
+                <div class="card">
+                    <div class="card-header">段子接口</div>
+                    <div class="card-body">
+                        <blockquote class="blockquote mb-0">
+                            <p>列表：[[ ${host} ]]/api/channel</p>
+                            <p>[[ ${host} ]]/api/channel</p>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="text-muted py-5">
+    <div class="container">
+        <p class="float-end mb-1">
+            <a href="#">Back to top</a>
+        </p>
+        <p class="mb-1">秋名山上行人稀，常有车手竟高低。如今车道今犹在，不见当年老司机。</p>
+        <p class="mb-1" style="color: #e53243">本站资源均来自网络爬虫，仅供大家学习使用，与本站无关</p>
+    </div>
+</footer>
+
+<script src="/bootstrap5/js/bootstrap.min.js"></script>
+<script src="/jquery/jquery-3.6.0.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.orangbus.video.dao.VideoCatesDao">
+  <resultMap id="BaseResultMap" type="com.orangbus.video.empty.VideoCates">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="vid" jdbcType="VARCHAR" property="vid" />
+    <result column="from_name" jdbcType="VARCHAR" property="fromName" />
+    <result column="sort" jdbcType="INTEGER" property="sort" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, `name`, vid, from_name, sort, created_at, updated_at
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from video_cates
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from video_cates
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.orangbus.video.empty.VideoCates" useGeneratedKeys="true">
+    insert into video_cates (`name`, vid, from_name, 
+      sort, created_at, updated_at
+      )
+    values (#{name,jdbcType=VARCHAR}, #{vid,jdbcType=VARCHAR}, #{fromName,jdbcType=VARCHAR}, 
+      #{sort,jdbcType=INTEGER}, #{createdAt,jdbcType=TIMESTAMP}, #{updatedAt,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.orangbus.video.empty.VideoCates" useGeneratedKeys="true">
+    insert into video_cates
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="vid != null">
+        vid,
+      </if>
+      <if test="fromName != null">
+        from_name,
+      </if>
+      <if test="sort != null">
+        sort,
+      </if>
+      <if test="createdAt != null">
+        created_at,
+      </if>
+      <if test="updatedAt != null">
+        updated_at,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="vid != null">
+        #{vid,jdbcType=VARCHAR},
+      </if>
+      <if test="fromName != null">
+        #{fromName,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.orangbus.video.empty.VideoCates">
+    update video_cates
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="vid != null">
+        vid = #{vid,jdbcType=VARCHAR},
+      </if>
+      <if test="fromName != null">
+        from_name = #{fromName,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.orangbus.video.empty.VideoCates">
+    update video_cates
+    set `name` = #{name,jdbcType=VARCHAR},
+      vid = #{vid,jdbcType=VARCHAR},
+      from_name = #{fromName,jdbcType=VARCHAR},
+      sort = #{sort,jdbcType=INTEGER},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

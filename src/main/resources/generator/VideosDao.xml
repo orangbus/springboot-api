@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.orangbus.video.dao.VideosDao">
+  <resultMap id="BaseResultMap" type="com.orangbus.video.empty.Videos">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="site_name" jdbcType="VARCHAR" property="siteName" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="cate_id" jdbcType="INTEGER" property="cateId" />
+    <result column="type_name" jdbcType="VARCHAR" property="typeName" />
+    <result column="vod_id" jdbcType="VARCHAR" property="vodId" />
+    <result column="pic" jdbcType="VARCHAR" property="pic" />
+    <result column="area" jdbcType="VARCHAR" property="area" />
+    <result column="lang" jdbcType="VARCHAR" property="lang" />
+    <result column="year" jdbcType="VARCHAR" property="year" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="download_url" jdbcType="VARCHAR" property="downloadUrl" />
+    <result column="download_url_tag" jdbcType="VARCHAR" property="downloadUrlTag" />
+    <result column="play_url" jdbcType="VARCHAR" property="playUrl" />
+    <result column="play_url_tag" jdbcType="VARCHAR" property="playUrlTag" />
+    <result column="play_count" jdbcType="INTEGER" property="playCount" />
+    <result column="visit_count" jdbcType="INTEGER" property="visitCount" />
+    <result column="error_count" jdbcType="INTEGER" property="errorCount" />
+    <result column="likes" jdbcType="INTEGER" property="likes" />
+    <result column="unlikes" jdbcType="INTEGER" property="unlikes" />
+    <result column="level" jdbcType="TINYINT" property="level" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, `status`, site_name, title, cate_id, type_name, vod_id, pic, area, lang, `year`, 
+    content, download_url, download_url_tag, play_url, play_url_tag, play_count, visit_count, 
+    error_count, likes, unlikes, `level`, created_at, updated_at
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from videos
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from videos
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.orangbus.video.empty.Videos" useGeneratedKeys="true">
+    insert into videos (`status`, site_name, title, 
+      cate_id, type_name, vod_id, 
+      pic, area, lang, `year`, 
+      content, download_url, download_url_tag, 
+      play_url, play_url_tag, play_count, 
+      visit_count, error_count, likes, 
+      unlikes, `level`, created_at, 
+      updated_at)
+    values (#{status,jdbcType=INTEGER}, #{siteName,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
+      #{cateId,jdbcType=INTEGER}, #{typeName,jdbcType=VARCHAR}, #{vodId,jdbcType=VARCHAR}, 
+      #{pic,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, #{lang,jdbcType=VARCHAR}, #{year,jdbcType=VARCHAR}, 
+      #{content,jdbcType=VARCHAR}, #{downloadUrl,jdbcType=VARCHAR}, #{downloadUrlTag,jdbcType=VARCHAR}, 
+      #{playUrl,jdbcType=VARCHAR}, #{playUrlTag,jdbcType=VARCHAR}, #{playCount,jdbcType=INTEGER}, 
+      #{visitCount,jdbcType=INTEGER}, #{errorCount,jdbcType=INTEGER}, #{likes,jdbcType=INTEGER}, 
+      #{unlikes,jdbcType=INTEGER}, #{level,jdbcType=TINYINT}, #{createdAt,jdbcType=TIMESTAMP}, 
+      #{updatedAt,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.orangbus.video.empty.Videos" useGeneratedKeys="true">
+    insert into videos
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="siteName != null">
+        site_name,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="cateId != null">
+        cate_id,
+      </if>
+      <if test="typeName != null">
+        type_name,
+      </if>
+      <if test="vodId != null">
+        vod_id,
+      </if>
+      <if test="pic != null">
+        pic,
+      </if>
+      <if test="area != null">
+        area,
+      </if>
+      <if test="lang != null">
+        lang,
+      </if>
+      <if test="year != null">
+        `year`,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="downloadUrl != null">
+        download_url,
+      </if>
+      <if test="downloadUrlTag != null">
+        download_url_tag,
+      </if>
+      <if test="playUrl != null">
+        play_url,
+      </if>
+      <if test="playUrlTag != null">
+        play_url_tag,
+      </if>
+      <if test="playCount != null">
+        play_count,
+      </if>
+      <if test="visitCount != null">
+        visit_count,
+      </if>
+      <if test="errorCount != null">
+        error_count,
+      </if>
+      <if test="likes != null">
+        likes,
+      </if>
+      <if test="unlikes != null">
+        unlikes,
+      </if>
+      <if test="level != null">
+        `level`,
+      </if>
+      <if test="createdAt != null">
+        created_at,
+      </if>
+      <if test="updatedAt != null">
+        updated_at,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="siteName != null">
+        #{siteName,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="cateId != null">
+        #{cateId,jdbcType=INTEGER},
+      </if>
+      <if test="typeName != null">
+        #{typeName,jdbcType=VARCHAR},
+      </if>
+      <if test="vodId != null">
+        #{vodId,jdbcType=VARCHAR},
+      </if>
+      <if test="pic != null">
+        #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="lang != null">
+        #{lang,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null">
+        #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="downloadUrl != null">
+        #{downloadUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="downloadUrlTag != null">
+        #{downloadUrlTag,jdbcType=VARCHAR},
+      </if>
+      <if test="playUrl != null">
+        #{playUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="playUrlTag != null">
+        #{playUrlTag,jdbcType=VARCHAR},
+      </if>
+      <if test="playCount != null">
+        #{playCount,jdbcType=INTEGER},
+      </if>
+      <if test="visitCount != null">
+        #{visitCount,jdbcType=INTEGER},
+      </if>
+      <if test="errorCount != null">
+        #{errorCount,jdbcType=INTEGER},
+      </if>
+      <if test="likes != null">
+        #{likes,jdbcType=INTEGER},
+      </if>
+      <if test="unlikes != null">
+        #{unlikes,jdbcType=INTEGER},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=TINYINT},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.orangbus.video.empty.Videos">
+    update videos
+    <set>
+      <if test="status != null">
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="siteName != null">
+        site_name = #{siteName,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="cateId != null">
+        cate_id = #{cateId,jdbcType=INTEGER},
+      </if>
+      <if test="typeName != null">
+        type_name = #{typeName,jdbcType=VARCHAR},
+      </if>
+      <if test="vodId != null">
+        vod_id = #{vodId,jdbcType=VARCHAR},
+      </if>
+      <if test="pic != null">
+        pic = #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        area = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="lang != null">
+        lang = #{lang,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null">
+        `year` = #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="downloadUrl != null">
+        download_url = #{downloadUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="downloadUrlTag != null">
+        download_url_tag = #{downloadUrlTag,jdbcType=VARCHAR},
+      </if>
+      <if test="playUrl != null">
+        play_url = #{playUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="playUrlTag != null">
+        play_url_tag = #{playUrlTag,jdbcType=VARCHAR},
+      </if>
+      <if test="playCount != null">
+        play_count = #{playCount,jdbcType=INTEGER},
+      </if>
+      <if test="visitCount != null">
+        visit_count = #{visitCount,jdbcType=INTEGER},
+      </if>
+      <if test="errorCount != null">
+        error_count = #{errorCount,jdbcType=INTEGER},
+      </if>
+      <if test="likes != null">
+        likes = #{likes,jdbcType=INTEGER},
+      </if>
+      <if test="unlikes != null">
+        unlikes = #{unlikes,jdbcType=INTEGER},
+      </if>
+      <if test="level != null">
+        `level` = #{level,jdbcType=TINYINT},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.orangbus.video.empty.Videos">
+    update videos
+    set `status` = #{status,jdbcType=INTEGER},
+      site_name = #{siteName,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      cate_id = #{cateId,jdbcType=INTEGER},
+      type_name = #{typeName,jdbcType=VARCHAR},
+      vod_id = #{vodId,jdbcType=VARCHAR},
+      pic = #{pic,jdbcType=VARCHAR},
+      area = #{area,jdbcType=VARCHAR},
+      lang = #{lang,jdbcType=VARCHAR},
+      `year` = #{year,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      download_url = #{downloadUrl,jdbcType=VARCHAR},
+      download_url_tag = #{downloadUrlTag,jdbcType=VARCHAR},
+      play_url = #{playUrl,jdbcType=VARCHAR},
+      play_url_tag = #{playUrlTag,jdbcType=VARCHAR},
+      play_count = #{playCount,jdbcType=INTEGER},
+      visit_count = #{visitCount,jdbcType=INTEGER},
+      error_count = #{errorCount,jdbcType=INTEGER},
+      likes = #{likes,jdbcType=INTEGER},
+      unlikes = #{unlikes,jdbcType=INTEGER},
+      `level` = #{level,jdbcType=TINYINT},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
