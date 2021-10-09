@@ -3,7 +3,7 @@ LABEL maintainer="orangbus40400@gmail.com"
 
 WORKDIR /Code
 # 本地测试
-ADD ./target/video-0.0.1-SNAPSHOT.jar /Code
+#ADD ./target/video-0.0.1-SNAPSHOT.jar /Code
 # 线上运行
 ADD ./prod/video-0.0.1-SNAPSHOT.jar /Code
 EXPOSE 8080
