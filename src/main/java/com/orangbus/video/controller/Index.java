@@ -35,9 +35,11 @@ public class Index {
     public String index(HttpServletRequest request, Model model){
         Integer jokeCount = jokesDao.selectCount(null);
         Integer videoCount = videosDao.selectCount(null);
+        Integer channelsCount = channels.selectCount(null);
         model.addAttribute("host","http://"+request.getServerName()+":"+request.getServerPort());
         model.addAttribute("joke_count",jokeCount);
         model.addAttribute("video_count",videoCount);
+        model.addAttribute("channel_count",channelsCount);
         model.addAttribute("message","简易Api接口");
         model.addAttribute("title","首页");
         model.addAttribute("qq","http://google.com");

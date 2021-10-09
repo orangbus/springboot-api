@@ -2,20 +2,20 @@ server:
   port: 8080
 
 # 本地数据库连接
-#spring:
-#  datasource:
-#    username: root
-#    password: root
-#    url: jdbc:mysql://127.0.0.1:3306/java_video?useSSL=false&useUnicode=true&characterEncode=UTF-8&serverTimezone=GMT
-#    driver-class-name: com.mysql.cj.jdbc.Driver
-
-# 线上数据库连接
 spring:
   datasource:
-    username: ${USERNAME}
-    password: ${PASSWORD}
-    url: jdbc:mysql://${IP}:${PORT}/java_video?useSSL=false&useUnicode=true&characterEncode=UTF-8&serverTimezone=GMT
+    username: root
+    password: root
+    url: jdbc:mysql://127.0.0.1:3306/java_video?useSSL=false&useUnicode=true&characterEncode=UTF-8&serverTimezone=GMT
     driver-class-name: com.mysql.cj.jdbc.Driver
+
+# 线上数据库连接
+#spring:
+#  datasource:
+#    username: ${USERNAME}
+#    password: ${PASSWORD}
+#    url: jdbc:mysql://${IP}:${PORT}/java_video?useSSL=false&useUnicode=true&characterEncode=UTF-8&serverTimezone=GMT
+#    driver-class-name: com.mysql.cj.jdbc.Driver
 
 logging:
   level:
