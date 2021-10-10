@@ -36,6 +36,11 @@ public class Index {
         return hashMap;
     }
 
+    private String getHost(){
+
+        return "http://java.orangbus.cn";
+    }
+
     /**
      * 首页
      *
@@ -46,7 +51,8 @@ public class Index {
         Integer jokeCount = jokesDao.selectCount(null);
         Integer videoCount = videosDao.selectCount(null);
         Integer channelsCount = channels.selectCount(null);
-        model.addAttribute("host", "http://" + request.getServerName() + ":" + request.getServerPort());
+//        model.addAttribute("host", "http://" + request.getServerName() + ":" + request.getServerPort());
+        model.addAttribute("host", getHost());
         model.addAttribute("joke_count", jokeCount);
         model.addAttribute("video_count", videoCount);
         model.addAttribute("channel_count", channelsCount);
@@ -63,7 +69,8 @@ public class Index {
         int randomId = random.nextInt(count) + 1;
         Jokes joke = jokesDao.selectById(randomId);
         model.addAttribute("data", joke);
-        model.addAttribute("host", "http://" + request.getServerName() + ":" + request.getServerPort());
+        model.addAttribute("host", getHost());
+//        model.addAttribute("host", "http://" + request.getServerName() + ":" + request.getServerPort());
         model.addAttribute("navList", about());
         return "joke/index";
     }
@@ -71,7 +78,8 @@ public class Index {
     @GetMapping("/video")
     public String video(HttpServletRequest request, Model model) {
         model.addAttribute("title", "视频");
-        model.addAttribute("host", "http://" + request.getServerName() + ":" + request.getServerPort());
+//        model.addAttribute("host", "http://" + request.getServerName() + ":" + request.getServerPort());
+        model.addAttribute("host", getHost());
         model.addAttribute("navList", about());
         return "video/index";
     }
@@ -80,7 +88,8 @@ public class Index {
     public String channel(HttpServletRequest request, Model model) {
         List<Channels> channels = this.channels.selectList(null);
         model.addAttribute("title", "电视直播");
-        model.addAttribute("host", "http://" + request.getServerName() + ":" + request.getServerPort());
+//        model.addAttribute("host", "http://" + request.getServerName() + ":" + request.getServerPort());
+        model.addAttribute("host", getHost());
         model.addAttribute("lists", channels);
         model.addAttribute("navList", about());
         return "channel/index";

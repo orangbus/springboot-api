@@ -67,15 +67,15 @@
         <div class="card-header">段子接口</div>
         <div class="card-body">
             <blockquote class="blockquote mb-0">
-                <p>列表：[[ ${host} ]]/api/joke</p>
+                <p>列表：<a th:href="${host}+'/api/joke'" target="_blank">[[ ${host} ]]/api/joke</a></p>
                 <footer class="blockquote-footer">page:页数</footer>
                 <footer class="blockquote-footer">limit:每页显示条数</footer>
                 <footer class="blockquote-footer">cate_id:分类id</footer>
-                <p>[[ ${host} ]]/page=1&limit=15&cate_id=1</p><br>
-                <p>详情：[[ ${host} ]]/api/joke/detail</p>
+                <p><a th:href="${host}+'/api/joke?page=1&limit=15&cate_id=1'" target="_blank">[[ ${host} ]]/api/joke?page=1&limit=15&cate_id=1</a></p><br>
+                <p>详情：<a th:href="${host}+'/api/joke/detail'">[[ ${host} ]]/api/joke/detail</a></p>
                 <footer class="blockquote-footer">id:段子id</footer>
-                <p>[[ ${host} ]]/api/joke/detail=1</p><br>
-                <p>分类：[[ ${host} ]]/api/joke/cate</p>
+                <p><a th:href="${host}+'/api/joke/detail?id=1'" target="_blank">[[ ${host} ]]/api/joke/detail?id=1</a></p><br>
+                <p>分类：<a th:href="${host}+'/api/joke/cate'" target="_blank">[[ ${host} ]]/api/joke/cate</a></p>
             </blockquote>
         </div>
     </div>
@@ -86,15 +86,15 @@
         <div class="card-header">视频接口</div>
         <div class="card-body">
             <blockquote class="blockquote mb-0">
-                <p>列表：[[ ${host} ]]/api/video</p>
+                <p>列表：<a th:href="${host}+'/api/video'" target="_blank">[[ ${host} ]]/api/video</a></p>
                 <footer class="blockquote-footer">page:页数</footer>
                 <footer class="blockquote-footer">limit:每页显示条数</footer>
                 <footer class="blockquote-footer">cate_id:分类id</footer>
-                <p>[[ ${host} ]]/api/video/page=1&limit=15&cate_id=1</p><br>
-                <p>详情：[[ ${host} ]]/api/video/detail</p>
+                <p><a th:href="${host}+'/api/video?page=1&limit=15&cate_id=1'" target="_blank">[[ ${host} ]]/api/video?page=1&limit=15&cate_id=1</a></p><br>
+                <p>详情：<a th:href="${host}+'/api/video/detail'" target="_blank">[[ ${host} ]]/api/video/detail</a></p>
                 <footer class="blockquote-footer">id:视频id</footer>
-                <p>[[ ${host} ]]/api/video/detail=1</p><br>
-                <p>分类：[[ ${host} ]]/api/video/cate</p>
+                <p><a th:href="${host}+'/api/video/detail?id=1'" target="_blank">[[ ${host} ]]/api/video/detail?id=1</a></p><br>
+                <p>分类：<a th:href="${host}+'/api/video/cate'">[[ ${host} ]]/api/video/cate</a></p>
             </blockquote>
         </div>
     </div>
@@ -106,7 +106,7 @@
         <div class="card-body">
             <blockquote class="blockquote mb-0">
                 <p>列表：[[ ${host} ]]/api/channel</p>
-                <p>[[ ${host} ]]/api/channel</p>
+                <p><a th:href="${host}+'/api/channel'" target="_blank">[[ ${host} ]]/api/channel</a></p>
             </blockquote>
         </div>
     </div>
