@@ -2,6 +2,8 @@ package com.orangbus.video.empty;
 
 import java.io.Serializable;
 import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 /**
@@ -71,9 +73,9 @@ public class Jokes implements Serializable {
      * 反馈处理级别，默认0：不处理，1：一级紧急，以此类推上去
      */
     private Byte level;
-
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone="GMT+8")
     private Date createdAt;
-
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone="GMT+8")
     private Date updatedAt;
 
     private static final long serialVersionUID = 1L;

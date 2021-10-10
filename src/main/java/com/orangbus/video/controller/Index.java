@@ -1,4 +1,5 @@
 package com.orangbus.video.controller;
+
 import com.orangbus.video.common.ApiResponse;
 import com.orangbus.video.dao.ChannelsDao;
 import com.orangbus.video.dao.JokesDao;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
@@ -27,48 +30,61 @@ public class Index {
     @Autowired
     private ChannelsDao channels;
 
+    private HashMap about() {
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put("qq群", "https://jq.qq.com/?_wv=1027&k=0skWPaUx");
+        hashMap.put("github", "http://github.com/orangbus");
+        hashMap.put("博客", "https://doc.orangbus.cn");
+        hashMap.put("电报群", "https://t.me/joinchat/FOho4eXM_9gXnd0y");
+        return hashMap;
+    }
+
     /**
      * 首页
+     *
      * @return
      */
     @GetMapping("/")
-    public String index(HttpServletRequest request, Model model){
+    public String index(HttpServletRequest request, Model model) {
         Integer jokeCount = jokesDao.selectCount(null);
         Integer videoCount = videosDao.selectCount(null);
         Integer channelsCount = channels.selectCount(null);
-        model.addAttribute("host","http://"+request.getServerName()+":"+request.getServerPort());
-        model.addAttribute("joke_count",jokeCount);
-        model.addAttribute("video_count",videoCount);
-        model.addAttribute("channel_count",channelsCount);
-        model.addAttribute("message","简易Api接口");
-        model.addAttribute("title","首页");
-        model.addAttribute("qq","http://google.com");
+        model.addAttribute("host", "http://" + request.getServerName() + ":" + request.getServerPort());
+        model.addAttribute("joke_count", jokeCount);
+        model.addAttribute("video_count", videoCount);
+        model.addAttribute("channel_count", channelsCount);
+        model.addAttribute("message", "简易Api接口");
+        model.addAttribute("title", "首页");
+        model.addAttribute("navList", about());
         return "index";
     }
 
     @GetMapping("/joke")
-    public String joke(HttpServletRequest request, Model model){
+    public String joke(HttpServletRequest request, Model model) {
         Random random = new Random();
-        int randomId = random.nextInt(10) +1;
+        int randomId = random.nextInt(10) + 1;
         Jokes joke = jokesDao.selectById(randomId);
-        model.addAttribute("data",joke);
-        model.addAttribute("host","http://"+request.getServerName()+":"+request.getServerPort());
+        model.addAttribute("data", joke);
+        model.addAttribute("host", "http://" + request.getServerName() + ":" + request.getServerPort());
+        model.addAttribute("navList", about());
         return "joke/index";
     }
 
     @GetMapping("/video")
-    public String video(HttpServletRequest request, Model model){
-        model.addAttribute("title","视频");
-        model.addAttribute("host","http://"+request.getServerName()+":"+request.getServerPort());
+    public String video(HttpServletRequest request, Model model) {
+        model.addAttribute("title", "视频");
+        model.addAttribute("host", "http://" + request.getServerName() + ":" + request.getServerPort());
+        model.addAttribute("navList", about());
         return "video/index";
     }
 
     @GetMapping("/channel")
-    public String channel(HttpServletRequest request, Model model){
+    public String channel(HttpServletRequest request, Model model) {
         List<Channels> channels = this.channels.selectList(null);
-        model.addAttribute("title","电视直播");
-        model.addAttribute("host","http://"+request.getServerName()+":"+request.getServerPort());
-        model.addAttribute("lists",channels);
+        model.addAttribute("title", "电视直播");
+        model.addAttribute("host", "http://" + request.getServerName() + ":" + request.getServerPort());
+        model.addAttribute("lists", channels);
+        model.addAttribute("navList", about());
         return "channel/index";
     }
 
@@ -76,10 +92,11 @@ public class Index {
      * 电视播放
      */
     @GetMapping("channel/player")
-    public String channelPlayer(@RequestParam int id,Model model){
+    public String channelPlayer(@RequestParam int id, Model model) {
         Channels channels = this.channels.selectById(id);
-        model.addAttribute("data",channels);
-        model.addAttribute("title","电视直播");
+        model.addAttribute("data", channels);
+        model.addAttribute("title", "电视直播");
+        model.addAttribute("navList", about());
         return "channel/player";
     }
 
@@ -87,8 +104,9 @@ public class Index {
      * m3u8解析播放
      */
     @GetMapping("/m3u8")
-    public String M3u8(Model model){
-        model.addAttribute("title","M3u8播放器");
+    public String M3u8(Model model) {
+        model.addAttribute("title", "M3u8播放器");
+        model.addAttribute("navList", about());
         return "channel/m3u8";
     }
 
@@ -96,7 +114,7 @@ public class Index {
      * 接口文档
      */
     @GetMapping("/doc")
-    public String readme(){
+    public String readme() {
         return "doc";
     }
 }

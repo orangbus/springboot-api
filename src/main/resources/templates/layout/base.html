@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title th:fragment="title">templet</title>
+</head>
+<body>
+<!--头部-->
+<div th:fragment="header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Eighth navbar example">
+        <div class="container">
+            <a class="navbar-brand" th:href="${host}">首页</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsExample07">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/joke">段子</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/video">视频</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/channel">电视直播</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/m3u8">M3u8解析</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-bs-toggle="dropdown" aria-expanded="false">更多</a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdown07">
+                            <li><a class="dropdown-item" th:each="item:${navList}" th:href="${item.value}" target="_blank">[[ ${item.key} ]]</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form>
+                    <input class="form-control" type="text" placeholder="搜索" aria-label="Search" onblur="javascript:window.open('https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=1&tn=baidu&wd='+$('#search').val(),'_blank')" id="search">
+                </form>
+            </div>
+        </div>
+    </nav>
+</div>
+<!--content-->
+<div th:fragment="content"></div>
+
+<!--底部-->
+<div th:fragment="about-footer">
+    <footer class="text-muted py-5">
+        <div class="container">
+            <p class="float-end mb-1">
+                <a href="#">Back to top</a>
+            </p>
+            <p class="mb-1">秋名山上行人稀，常有车手竟高低。如今车道今犹在，不见当年老司机。</p>
+            <p class="mb-1" style="color: #e53243">本站资源均来自网络爬虫，仅供大家学习使用，与本站无关</p>
+        </div>
+    </footer>
+</div>
+
+<!--段子接口-->
+<div th:fragment="joke-templet">
+    <div class="card">
+        <div class="card-header">段子接口</div>
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <p>列表：[[ ${host} ]]/api/joke</p>
+                <footer class="blockquote-footer">page:页数</footer>
+                <footer class="blockquote-footer">limit:每页显示条数</footer>
+                <footer class="blockquote-footer">cate_id:分类id</footer>
+                <p>[[ ${host} ]]/page=1&limit=15&cate_id=1</p><br>
+                <p>详情：[[ ${host} ]]/api/joke/detail</p>
+                <footer class="blockquote-footer">id:段子id</footer>
+                <p>[[ ${host} ]]/api/joke/detail=1</p><br>
+                <p>分类：[[ ${host} ]]/api/joke/cate</p>
+            </blockquote>
+        </div>
+    </div>
+</div>
+<!--视频接口-->
+<div th:fragment="video-templet">
+    <div class="card">
+        <div class="card-header">视频接口</div>
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <p>列表：[[ ${host} ]]/api/video</p>
+                <footer class="blockquote-footer">page:页数</footer>
+                <footer class="blockquote-footer">limit:每页显示条数</footer>
+                <footer class="blockquote-footer">cate_id:分类id</footer>
+                <p>[[ ${host} ]]/api/video/page=1&limit=15&cate_id=1</p><br>
+                <p>详情：[[ ${host} ]]/api/video/detail</p>
+                <footer class="blockquote-footer">id:视频id</footer>
+                <p>[[ ${host} ]]/api/video/detail=1</p><br>
+                <p>分类：[[ ${host} ]]/api/video/cate</p>
+            </blockquote>
+        </div>
+    </div>
+</div>
+<!--直播接口-->
+<div th:fragment="channel-templet">
+    <div class="card">
+        <div class="card-header">直播接口</div>
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <p>列表：[[ ${host} ]]/api/channel</p>
+                <p>[[ ${host} ]]/api/channel</p>
+            </blockquote>
+        </div>
+    </div>
+</div>
+
+<script src="/bootstrap5/js/bootstrap.min.js" th:fragment="bootstrap-js"></script>
+<script src="/jquery/jquery-3.6.0.min.js" th:fragment="jquery-js"></script>
+</body>
+</html>
