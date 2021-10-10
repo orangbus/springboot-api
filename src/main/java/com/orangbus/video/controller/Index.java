@@ -124,4 +124,11 @@ public class Index {
     public String readme() {
         return "doc";
     }
+
+    @GetMapping("/name")
+    public String Name(Model model) {
+        model.addAttribute("title", "M3u8播放器");
+        model.addAttribute("navList", about());
+        return "channel/m3u8";
+    }
 }

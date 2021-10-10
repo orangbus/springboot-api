@@ -1,21 +1,29 @@
 server:
   port: 8080
 
-# 本地数据库连接
-#spring:
-#  datasource:
-#    username: root
-#    password: root
-#    url: jdbc:mysql://127.0.0.1:3306/java_video?useSSL=false&useUnicode=true&characterEncode=UTF-8&serverTimezone=GMT
-#    driver-class-name: com.mysql.cj.jdbc.Driver
+# 开启热部署
+spring:
+  devtools:
+    livereload:
+      enabled: true #是否支持livereload
+      port: 35729
+    restart:
+      enabled:true:
+
+ # 本地数据库连接
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://127.0.0.1:3306/java_video?useSSL=false&useUnicode=true&characterEncode=UTF-8&serverTimezone=GMT
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
 # 线上数据库连接
-spring:
-  datasource:
-    username: ${USERNAME}
-    password: ${PASSWORD}
-    url: jdbc:mysql://${IP}:3306/java_video?useSSL=false&useUnicode=true&characterEncode=UTF-8&serverTimezone=GMT
-    driver-class-name: com.mysql.cj.jdbc.Driver
+#spring:
+#  datasource:
+#    username: ${USERNAME}
+#    password: ${PASSWORD}
+#    url: jdbc:mysql://${IP}:3306/java_video?useSSL=false&useUnicode=true&characterEncode=UTF-8&serverTimezone=GMT
+#    driver-class-name: com.mysql.cj.jdbc.Driver
 
 logging:
   level:
