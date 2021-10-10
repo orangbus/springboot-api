@@ -14,7 +14,7 @@ spring:
   datasource:
     username: ${USERNAME}
     password: ${PASSWORD}
-    url: jdbc:mysql://${IP}:${PORT}/java_video?useSSL=false&useUnicode=true&characterEncode=UTF-8&serverTimezone=GMT
+    url: jdbc:mysql://${IP}:3306/java_video?useSSL=false&useUnicode=true&characterEncode=UTF-8&serverTimezone=GMT
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 logging:

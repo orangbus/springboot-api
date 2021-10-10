@@ -58,3 +58,5 @@ services:
       - backend
     depends_on:
       - mysql
+    links:
+      - mysql

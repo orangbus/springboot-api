@@ -1,6 +1,5 @@
 package com.orangbus.video.controller;
 
-import com.orangbus.video.common.ApiResponse;
 import com.orangbus.video.dao.ChannelsDao;
 import com.orangbus.video.dao.JokesDao;
 import com.orangbus.video.dao.VideosDao;
@@ -13,8 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
@@ -62,7 +59,8 @@ public class Index {
     @GetMapping("/joke")
     public String joke(HttpServletRequest request, Model model) {
         Random random = new Random();
-        int randomId = random.nextInt(10) + 1;
+        Integer count = jokesDao.selectCount(null);
+        int randomId = random.nextInt(count) + 1;
         Jokes joke = jokesDao.selectById(randomId);
         model.addAttribute("data", joke);
         model.addAttribute("host", "http://" + request.getServerName() + ":" + request.getServerPort());
