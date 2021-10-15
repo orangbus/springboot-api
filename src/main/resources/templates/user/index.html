@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="layout/base">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="解析，M3u8视频播放，资源采集，采集接口，直播，搞笑段子">
+    <meta name="description" content="解析，M3u8视频播放，资源采集，采集接口，直播，搞笑段子,java,springboot学习">
+    <link rel="stylesheet" href="/bootstrap5/css/bootstrap.min.css">
+    <title th:fragment="title">首页</title>
+</head>
+<body>
+<div th:replace="~{layout/base::header}"></div>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <div class="alert alert-success d-flex justify-content-between" role="alert">
+                <strong>你好，[[ ${user.name}]]</strong>
+                <a class="btn btn-danger" href="/logout">登 出</a>
+            </div>
+
+            <div class="alert alert-primary" role="alert">
+                <strong>秘钥：[[ ${apikey}]]</strong>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

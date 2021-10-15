@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("com.orangbus.video.dao")
+@MapperScan("com.orangbus.video.**")
 public class VideoApplication {
 
     public static void main(String[] args) {

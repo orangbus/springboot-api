@@ -30,7 +30,7 @@ public class Joke {
      * 段子列表
      * @return
      */
-    @GetMapping("joke")
+    @GetMapping("/joke")
     public ApiResponsePage joke(
             @RequestParam(name = "page",defaultValue = "1") int page,
             @RequestParam(name = "limit",defaultValue = "15") int limit,
@@ -49,7 +49,7 @@ public class Joke {
      * 段子详情
      * @return
      */
-    @GetMapping("joke/detail")
+    @GetMapping("/joke/detail")
     public ApiResponse jokeDetail(@RequestParam int id){
         Jokes joke = jokesDao.selectById(id);
         return ApiResponse.success(joke);
@@ -59,7 +59,7 @@ public class Joke {
      * 分类列表
      * @return
      */
-    @GetMapping("joke/cate")
+    @GetMapping("/joke/cate")
     public ApiResponse jokeCate(){
         List<JokeCates> jokeCatesList = jokeCates.selectList(null);
         return ApiResponse.success(jokeCatesList);

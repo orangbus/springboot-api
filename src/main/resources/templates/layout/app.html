@@ -1,11 +1,14 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:fragment="header(title)">
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title th:fragment="title">templet</title>
+    <meta name="keywords" content="解析，M3u8视频播放，资源采集，采集接口，直播，搞笑段子">
+    <meta name="description" content="解析，M3u8视频播放，资源采集，采集接口，直播，搞笑段子,java,springboot学习">
+    <link rel="stylesheet" th:href="@{/bootstrap5/css/bootstrap.min.css}">
+    <title th:replace="${title}">orangbus</title>
 </head>
 <body>
 <!--头部-->

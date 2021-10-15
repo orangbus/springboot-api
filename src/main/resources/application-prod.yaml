@@ -1,0 +1,18 @@
+server:
+  port: 8080
+
+# 线上数据库连接
+spring:
+  datasource:
+    username: ${USERNAME}
+    password: ${PASSWORD}
+    url: jdbc:mysql://${IP}:3306/java_video?useSSL=false&useUnicode=true&characterEncode=UTF-8&serverTimezone=GMT
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+logging:
+  level:
+    root: warn
+    org.orangbus.video: warn
+    #com.baomidou: debug
+  file:
+    path: /log/logs.txt

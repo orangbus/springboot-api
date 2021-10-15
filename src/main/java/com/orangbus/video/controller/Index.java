@@ -5,6 +5,7 @@ import com.orangbus.video.dao.JokesDao;
 import com.orangbus.video.dao.VideosDao;
 import com.orangbus.video.empty.Channels;
 import com.orangbus.video.empty.Jokes;
+import com.orangbus.video.exception.NotFondException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +27,16 @@ public class Index {
 
     @Autowired
     private ChannelsDao channels;
+
+    @GetMapping("/test")
+    public String Test(){
+        int i = 9/0;
+        String user = null;
+        if (user == null){
+            throw new NotFondException("用户不能为空！");
+        }
+        return "error/500";
+    }
 
     private HashMap about() {
         HashMap<String, String> hashMap = new HashMap<>();
